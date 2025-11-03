@@ -49,26 +49,17 @@ interface LoginResponse {
 
       // Sucesso: Salve os dados e redirecione
       // signIn(response.data.payload); // Salvaria no context
-      alert(`Bem-vindo, ${response.data.payload.nome}!`);
+      
       router.push('/home');
 
     } catch (error: any) {
       console.error("Erro no login:", error.response?.data);
 
-      // Traduzindo erros da API para o Formik
-      // `actions.setErrors` é a forma correta de exibir erros do backend
-      //if (error.response?.status === 404) {
-      //  actions.setErrors({ email: "E-mail não cadastrado no sistema" });
-      //} else if (error.response?.status === 401) {
-      //  actions.setErrors({ senha: "Senha inválida. Verifique suas credenciais." });
-      //} else {
-        // Erro genérico pode ser associado a um campo ou exibido separadamente
-      //  actions.setErrors({ email: "Ocorreu um erro no servidor. Tente novamente." });
-      //}
+      
 
     } finally {
-      // Informa ao Formik que a submissão terminou, independentemente do resultado
-      //actions.setSubmitting(false);
+      actions.setSubmitting(false); // Finaliza o estado de submissão
+      
     }
   }
 
