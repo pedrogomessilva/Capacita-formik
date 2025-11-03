@@ -67,7 +67,7 @@ export default function Cadastro() {
    
 return(
         
-        <div className="w-screen h-screen bg-cinza-fundo grid grid-cols-2">
+        <div className="w-screen h-screen bg-orange-400 grid grid-cols-2">
                {/*Delimitando area total da tela */}
        
                    {/*Lado esquerdo da tela, com fundo preto, contendo logo, anuncio e imagem */}
@@ -76,14 +76,14 @@ return(
        
                        {/*Logo da empresa*/}
                        <div className="w-full h-[15%] flex flex-col items-start justify-start border-
-                        bg-preto-makers rounded-tr-full border-black">
+                        bg-black rounded-tr-full border-black">
        
                          <Image
                          
-                           src="/images/logo_makers_branco.png"
+                           src="/images/logo.png"
                            alt="Logo"
-                           width={200}  
-                           height={200}
+                           width={180}  
+                           height={180}
                            className="rounded-md object-cover"
                            
                          />
@@ -95,13 +95,13 @@ return(
        
                        {/*Area do anuncio "Faca seu orcamento" */}
                        <div className="w-full flex-1 flex text-cinza-fundo flex-col border- border-red-600 gap-4.5 
-                       text-center items-center justify-center bg-preto-makers">
+                       text-center items-center justify-center bg-black">
                          
                          <div className="border- font-inter font-extrabold flex flex-col items-center justify-center">
        
-                            <h1 className="text-[45px] border- w-[80%] flex-wrap text-start">FAÇA SEU ORÇAMENTO</h1>
+                            <h1 className="text-[45px] border- w-[80%] flex-wrap text-start">FAÇA SEU PROJETO</h1>
        
-                           <h2 className="text-[26px] w-[80%] text-start">Corte e gravação a laser</h2>
+                           <h2 className="text-[26px] w-[80%] text-start">Com a maior EJ do Brasil</h2>
        
        
                          </div>
@@ -110,8 +110,8 @@ return(
                            <div className="border- border-amber-600">
        
                              <Image 
-                               src="/images/foto_cadastro.jpg"
-                               alt="Imagem_solda"
+                               src="/images/codigo.png"
+                               alt="imagem"
                                width={450}   
                                height={250}
                                className="rounded-md object-cover"
@@ -132,16 +132,16 @@ return(
                    overflow-y-auto">
        
                        <div className="flex flex-col items-center justify-center border- font-inter 
-                       text-2xl font-bold mt-5">
+                       text-2xl font-bold mt-5 text-white">
        
-                         <h2 className="text-[30px]">Cadastre-se</h2>
+                         <h2 className="text-[30px]  ">Cadastre-se</h2>
 
                          <div className="flex flex-row gap-2 text-xl">
 
                             <p>Já possuo uma conta!</p>
 
                             <Link href="/login"
-                                className="text-verde-makers hover:text-verde-makers-hover underline "> 
+                                className="text-white hover:text-black underline "> 
                                 
                                 Entrar
 
@@ -153,7 +153,7 @@ return(
                        </div>
 
                 {/* Card do formulário */}
-        <div className="w-[70%] bg-branco-padrao p-8 rounded-2xl shadow-lg">
+        <div className="w-[70%] bg-white p-8 rounded-2xl shadow-lg my-8">
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -168,6 +168,7 @@ return(
                   type="text"
                   label="Nome"
                   placeholder="Insira seu nome completo"
+                  style="h-9 w-[75%] p-2 pr-10 bg-gray-200"
                 />
 
                 <InputText
@@ -175,15 +176,17 @@ return(
                   type="email"
                   label="E-mail"
                   placeholder="seu.email@exemplo.com"
+                  style="h-9 w-[75%] p-2 pr-10 bg-gray-200"
                 />
 
                 <div className="relative w-full flex flex-col items-center">
                     <label className="text-[#1E1E1E] font-inter font-bold text-lg w-[75%]">Senha</label>
-                    <div className="relative w-[70%]">
+                    <div className="relative w-[75%] my-2 ">
                         <InputText
                             name="senha"
                             type={showPassword ? "text" : "password"}
                             placeholder="Crie uma senha forte"
+                            style="h-9 w-full p-2 pr-10 bg-gray-200"
                             
                         />
                         <div
@@ -200,17 +203,19 @@ return(
                   type="password"
                   label="Confirme sua senha"
                   placeholder="Repita a senha criada"
+                  style="h-9 w-[75%] p-2 pr-10 bg-gray-200"
                 />
 
-                <div className="mt-8">
+                <div className="flex flex-col  justify-center items-center w-full mt-8">
                   {/* Botão de confirmação usando o estado manual 'isLoading' */}
                   <Botao
                     corBorda="border-white"
                     corTexto="text-white"
                     texto={isLoading ? "Criando Conta..." : "Criar Conta"}
-                    corBotao="bg-verde-makers hover:bg-verde-makers-hover"
+                    corBotao="bg-black hover:bg-orange-400"
                     disabled={isLoading} // O botão é desabilitado pelo estado manual
                     type="submit"
+                    
                   />
                 </div>
               </Form>

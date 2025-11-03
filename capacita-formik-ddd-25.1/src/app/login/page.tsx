@@ -57,23 +57,23 @@ interface LoginResponse {
 
       // Traduzindo erros da API para o Formik
       // `actions.setErrors` é a forma correta de exibir erros do backend
-      if (error.response?.status === 404) {
-        actions.setErrors({ email: "E-mail não cadastrado no sistema" });
-      } else if (error.response?.status === 401) {
-        actions.setErrors({ senha: "Senha inválida. Verifique suas credenciais." });
-      } else {
+      //if (error.response?.status === 404) {
+      //  actions.setErrors({ email: "E-mail não cadastrado no sistema" });
+      //} else if (error.response?.status === 401) {
+      //  actions.setErrors({ senha: "Senha inválida. Verifique suas credenciais." });
+      //} else {
         // Erro genérico pode ser associado a um campo ou exibido separadamente
-        actions.setErrors({ email: "Ocorreu um erro no servidor. Tente novamente." });
-      }
+      //  actions.setErrors({ email: "Ocorreu um erro no servidor. Tente novamente." });
+      //}
 
     } finally {
       // Informa ao Formik que a submissão terminou, independentemente do resultado
-      actions.setSubmitting(false);
+      //actions.setSubmitting(false);
     }
   }
 
   return (
-    <div className="w-screen h-screen bg-cinza-fundo grid grid-cols-2">
+    <div className="w-screen h-screen bg-orange-400 grid grid-cols-2">
      
       {/*Lado esquerdo da tela, com fundo preto, contendo logo, anuncio e imagem */}
             <div className="col-span-1 flex flex-col items-center justify-between border- border-black 
@@ -81,14 +81,14 @@ interface LoginResponse {
 
                 {/*Logo da empresa*/}
                 <div className="w-full h-[15%] flex flex-col items-start justify-start border-
-                 bg-preto-makers rounded-tr-full border-black">
+                 bg-black rounded-tr-full border-black">
 
                   <Image
                   
-                    src="/images/logo_makers_branco.png"
+                    src="/images/logo.png"
                     alt="Logo"
-                    width={200}  
-                    height={200}
+                    width={180}  
+                    height={180}
                     className="rounded-md object-cover"
                     
                   />
@@ -100,13 +100,13 @@ interface LoginResponse {
 
                 {/*Area do anuncio "Faca seu orcamento" */}
                 <div className="w-full h-[85%] flex text-cinza-fundo flex-col border- border-red-600 gap-4.5 
-                text-center items-center justify-center bg-preto-makers">
+                text-center items-center justify-center bg-black">
                   
                   <div className="border- font-inter font-extrabold flex flex-col items-center justify-center">
 
-                     <h1 className="text-[45px] border- w-[80%] flex-wrap text-start">FAÇA SEU ORÇAMENTO</h1>
+                     <h1 className="text-[45px] border- w-[80%] flex-wrap text-start">FAÇA SEU PROJETO</h1>
 
-                    <h2 className="text-[26px] w-[80%] text-start">Corte e gravação a laser</h2>
+                    <h2 className="text-[26px] w-[80%] text-start">Com a maior EJ do Brasil</h2>
 
 
                   </div>
@@ -115,8 +115,8 @@ interface LoginResponse {
                     <div className="border- border-amber-600">
 
                       <Image 
-                        src="/images/foto_cadastro.jpg"
-                        alt="Imagem_solda"
+                        src="/images/codigo.png"
+                        alt="imagem"
                         width={450}   
                         height={250}
                         className="rounded-md object-cover"
@@ -133,12 +133,12 @@ interface LoginResponse {
             </div>
 
       {/* Lado Direito - Formulário */}
-      <div className="col-span-1 flex flex-col items-center justify-center">
-        <div className="text-center mb-8">
-          <h2 className="font-inter text-2xl font-bold">Entrar</h2>
+      <div className="col-span-1 flex flex-col items-center justify-center overflow-auto">
+        <div className="w-[65%] text-center my-8">
+          <h2 className="font-inter text-2xl font-bold mt-8">Entrar</h2>
         </div>
 
-        <div className="w-[65%] bg-branco-padrao p-6 rounded-2xl shadow-md">
+        <div className="w-[65%] bg-white p-6 rounded-2xl shadow-md">
           {/* O Formik gerencia todo o estado do formulário */}
           <Formik
             initialValues={{ email: "", senha: "" }}
@@ -147,22 +147,26 @@ interface LoginResponse {
           >
             {({ isSubmitting }) => (
               <Form className="flex flex-col items-center">
-                
-                <InputText
+
+                <div className="w-[75%] flex flex-col ">
+
+                  <InputText
                   name="email"
                   type="email"
                   label="E-mail"
                   placeholder="seuemail@exemplo.com"
-                  style="h-9 w-full p-2"
+                  style="h-9 w-full p-2 pr-10 bg-gray-200"
                 />
+                
+                
 
-                <div className="relative w-[75%] my-2">
+                <div className="relative w-full my-2 ">
                   <InputText
                     name="senha"
                     type={showPassword ? "text" : "password"}
                     label="Senha"
                     placeholder="********"
-                    style="h-9 w-full p-2 pr-10"
+                    style="h-9 w-full p-2 pr-10 bg-gray-200"
                   />
                   <div
                     className="absolute top-9 right-0 flex items-center pr-3 cursor-pointer"
@@ -172,21 +176,23 @@ interface LoginResponse {
                   </div>
                 </div>
 
-                <label className="flex items-center gap-2 w-[75%] my-2 text-sm">
-                  <input type="checkbox" className="w-4 h-4 accent-verde-makers" />
+              </div>
+
+                <label className="flex items-center gap-2 w-[75%] my-2 text-sm text-black">
+                  <input type="checkbox" className="w-4 h-4 accent-orange-500" />
                   Lembre-se de mim
                 </label>
 
                 <Botao
                   type="submit"
                   texto={isSubmitting ? "Entrando..." : "Entrar"}
-                  corBotao="bg-verde-makers hover:bg-verde-makers-hover"
+                  corBotao="bg-black hover:bg-orange-400 "
                   disabled={isSubmitting} // Desabilita o botão durante a "requisição"
                   corTexto="text-white" 
                   corBorda="border-transparent"
                 />
 
-                <div className="w-[75%] mt-4">
+                <div className="w-[75%] mt-4 text-black text-center">
                   <Link href="/esqueci_senha" className="underline text-sm">
                     Esqueceu sua senha?
                   </Link>
@@ -196,12 +202,12 @@ interface LoginResponse {
           </Formik>
         </div>
 
-        <div className="w-[65%] text-center mt-8">
+        <div className="w-[65%] flex flex-col text-center mt-4 mb-8 text-white justify-center items-center">
             <h3>Ainda não possui uma conta?</h3>
             <Botao
                 onClick={() => router.push("/cadastro")}
                 texto="Cadastre-se"
-                corBotao="bg-verde-makers hover:bg-verde-makers-hover mt-2"
+                corBotao="bg-black mt-2"
                 type="button"
                 corTexto="text-white" 
                 corBorda="border-transparent"
